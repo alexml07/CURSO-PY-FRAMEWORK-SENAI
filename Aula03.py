@@ -1,3 +1,5 @@
+# Automação de tarefas no navegador usando PyAutoGUI
+
 import pyautogui as py
 
 py.press("win")
