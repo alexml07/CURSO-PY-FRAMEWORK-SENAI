@@ -1,0 +1,4 @@
+# Colocar neste arquivo o path e nome do arquivo ou somente o diretorio (pasta) que deve ser ignorado na sincronização do Git para que o mesmo IGNORE a(s) pasta(s) ou o(s) arquivo(s) relacionados no mesmo, por exemplo:
+
+pasta_nao_git
+pasta_arquivo_nao_git\arq_nao_git.txt
