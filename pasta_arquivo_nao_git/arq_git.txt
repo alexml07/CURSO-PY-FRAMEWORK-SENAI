@@ -1,2 +1,3 @@
 # Esse arquivo deve ser sincronizado no Git porque não está relacionado no .gitignore
 
+teste
