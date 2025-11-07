@@ -1,5 +1,9 @@
-from streamlit import columns,title,header,write,text_input,button,warning,success,error,markdown,number_input
-from math import sqrt,pow
+from streamlit import bar_chart,columns,title,header,write,text_input,button,warning,success,error,markdown,number_input
+
+def grafico(datsu1,datsu2,datsu3):
+    # Apresentação de grafico
+    bar_chart([datsu1 ,datsu2,datsu3],
+                use_container_width=True, height=200, color="#eaff00")
 
 title('🎯Simulação de lançamento de Dardos🎯')
 # Simulação de lançamento de 3 dardos. O objetivo do aplicativo é mostrar o dardo com a maior distancia
@@ -30,3 +34,4 @@ if button('Apresentar resultados de lançamento'):
         write('Houve empate sem vencedores')
     else:
         write(f"O dardo com a maior distância e {dardo_venc} com {maior_dist}")
+        grafico(dardo1,dardo2,dardo3)
