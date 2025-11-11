@@ -10,7 +10,7 @@ n=None
 try:
     n=int(st.text_input("Deseja a tabuada de qual número:"))
     for i in range(1,11):
-        saida = f" {n:2} x {i:2} = {n*i:2}"
+        saida = f" {n:>5} x {i:>5} = {n*i:>5}"
         st.markdown(f"""{saida}""")
 except ValueError:
     if n is None:
