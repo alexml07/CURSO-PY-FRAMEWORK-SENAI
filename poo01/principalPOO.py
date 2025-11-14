@@ -14,11 +14,8 @@ tY.a=int(input('Digite a medida de a:'))
 tY.b=int(input('Digite a medida de b:'))
 tY.c=int(input('Digite a medida de c:'))
 
-p=(tX.a+tX.b+tX.c)/2
-areax=(p*(p-tX.a)*(p-tX.b)*(p-tX.c))**0.5
-p=(tY.a+tY.b+tY.c)/2
-areay=(p*(p-tY.a)*(p-tY.b)*(p-tY.c))**0.5
-
+areax=tX.area()
+areay=tY.area()
 
 if areax>areay:
     saida='A área do triângulo X é maior que a área do Y.'
