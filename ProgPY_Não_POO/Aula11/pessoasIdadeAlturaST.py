@@ -18,7 +18,8 @@ while True:
         continue
     else:
         break
-for i in range(1,n+1):
+qtde=n+1
+for i in range(1,qtde):
     nomes.append=st.text_input(f'Digite o nome da {i}ª pessoa: ')
     idades.append=st.number_input(f'Idade (anos inteiro) de {nomes[i-1]}: ')
     alturas.append=st.number_input(f'Altura (metros) {nomes[i-1]}: ')
