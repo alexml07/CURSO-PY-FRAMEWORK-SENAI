@@ -37,7 +37,14 @@ class ContaPessoaFisica:#Super classe
     def depositar(self, deposito:float) -> float:
         self._saldo += deposito
     def saque(self, saque:float) -> float:
-        self._saldo -= saque - 5.00
+        self._saldo -= saque + 5.00
+    def dados(self) -> str:
+        saida = f'''
+        Numero: {self._numeroDaConta}
+        Titular: {self._titular}
+        Saldo: {self._saldo}
+'''
+        return saida
 
     #---Fim super classe---
 
@@ -61,26 +68,57 @@ class ContaPessoaJuridica(ContaPessoaFisica):#Sub classe da classe Conta Pessoa 
     #4° Membro - Métodos
     def limiteDisponivel(self) -> float:
         return self._limite
-    #----Fim sub classe----
-class ContaPoupanca(ContaPessoaFisica):
-    # 1º Membro - Atributos
-    __taxaDeJuros=0.05
-
-    # 2º Membro - Propriedades
-    @property
-    def __taxaDeJuros(self)->float:
-        return self.__taxaDeJuros
-    
-    # 3º Membro - Construtor
-    def __init__(self,numeroDaConta,titular,saldo):
-        super().__init__(numeroDaConta,titular,saldo)
-    
-    # 4º Membro - Métodos
-    def saque(self, saque:float) -> float:
-        self._saldo-=saque
+   
+    def saque(self, saque:float) -> float:#Sobrescrita do método saque
+        self._saldo -= saque
         return self._saldo
-    def atualizarSaldo(self)->float:
-        self.saldo+=self._saldo*self.__taxaDeJuros
-        return self.saldo
+   
+    def dados(self) -> str:
+        saida = f'''
+        {super().dados()}        Limite: {self._limite}
+'''
+        return saida
+
+
+    #----Fim sub classe----
+
+class ContaPoupanca(ContaPessoaFisica):
+    #1° Membro - Atributos
+    __taxaDeJuros = 0.05
+
+    #2° Membro - Propriedades
+    @property
+    def _taxaDeJuros(self) -> float:
+        return self.__taxaDeJuros
+   
+    #3° Membro - Construtor
+    def __init__(self, numeroDaConta, titular, saldo):
+        super().__init__(numeroDaConta, titular, saldo)
+   
+    #4° Membro - Métodos
+    def saque(self, saque:float) -> float:#Sobrescrita do método saque
+        self._saldo -= saque
+        return self._saldo
+    def atualizarSaldo(self) -> float:
+        self._saldo += self._saldo * self._taxaDeJuros
+        return self._saldo
 #---------------Fim classes-------------
 
+#Programa Principal
+
+conta1 = ContaPessoaFisica(123456, "Clodoaldo", 1000)
+conta2 = ContaPessoaJuridica(654321, "Adriano", 500, 100)
+conta3 = ContaPoupanca(789, "Vitor", -100)
+
+#Saida de dados 1
+print(f'''{conta1.dados()} {conta2.dados()} {conta3.dados()}''')
+conta1.depositar(200)
+print(f'Saldo após depósito na conta 1: {conta1._saldo}')
+conta1.saque(50)
+print(f'Saldo após saque na conta 1: {conta1._saldo}')
+#Saida de dados 2
+print(f'''{conta1.dados()} {conta2.dados()} {conta3.dados()}''')
+conta2.saque(100)
+print(f'Saldo após saque na conta 2: {conta2._saldo}')
+conta2.depositar(300)
+print(f'Saldo após depósito na conta 2: {conta2._saldo}')
